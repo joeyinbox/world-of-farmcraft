@@ -1,0 +1,31 @@
+{
+  "name": "world-of-farmcraft",
+  "description": "An online multiplayer 3D isometric farm game",
+  "version": "0.8.2",
+  "contributors": [
+    {
+      "name": "Joey Clouvel",
+      "email": "joey@clouvel.com",
+      "web": "http://joeyclouvel.com"
+    }
+  ],
+  "dependencies": {
+    "socket.io": "0.9.13",
+    "mysql": "2.0.0",
+    "eyes": "0.1.8",
+    "response": "0.1.0",
+    "sesh": "0.1.0",
+    "nodemailer": "0.3.42"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeyinbox/world-of-farmcraft.git"
+  },
+  "licenses": [
+    {
+      "name": "GPL",
+      "url": "https://github.com/joeyinbox/world-of-farmcraft/blob/master/LICENSE"
+    }
+  ],
+  "homepage": "https://github.com/joeyinbox/world-of-farmcraft"
+}

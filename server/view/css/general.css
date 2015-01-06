@@ -1,0 +1,89 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	background: #a4c741 url('../img/sign-background.png') no-repeat bottom center fixed; 
+	background-size: cover;
+	color: #000;
+}
+
+.wrapper {
+	width: 530px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+h1 {
+	z-index: 2;
+	position: relative;
+}
+
+#main {
+	margin: 0 auto;
+	z-index: 1;
+	-webkit-transition: all ease 1s;
+	-moz-transition: all ease 1s;
+	-o-transition: all ease 1s;
+	-ms-transition: all ease 1s;
+	transition: all ease 1s;
+}
+#warning {
+	margin: 0 auto;
+	z-index: 1;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.4);
+	padding: 20px 10px;
+	border-radius: 10px;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin-bottom: 20px;
+}
+
+a, a:visited {
+	color: #000;
+	text-decoration: none;
+}
+
+
+label {
+	width: 140px;
+	float: left;
+	text-align: right;
+}
+label, input, select {
+	margin-top: 10px;
+	line-height: 20px;
+}
+select {
+	text-align: left;
+}
+
+input[type="submit"] {
+	width: 100px;
+	font-size: 1.2em;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+p#error {
+	color: #ff3435;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+
+
+footer {
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+}
+footer p {
+	width: 530px;
+	text-align: center;
+}

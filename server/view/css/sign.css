@@ -1,0 +1,23 @@
+#main, #warning {
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 20px 0;
+	border-radius: 10px;
+	position: relative;
+}
+#main {
+	margin-top: -200px;
+	opacity: 0;
+	width: 400px;
+}
+
+#register {
+	display: none;
+}
+
+#lost {
+	font-size: 0.8em;
+}
+
+input {
+	width: 200px;
+}

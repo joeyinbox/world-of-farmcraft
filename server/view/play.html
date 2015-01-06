@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>World of Farmcraft</title>
+		<link rel="stylesheet" href="/view/css/general.css" />
+		<link rel="stylesheet" href="/view/css/play.css" />
+		<link rel="shortcut icon" href="/view/img/favicon.ico" />
+		<script src="/view/js/jquery-1.8.3.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/view/js/play.js"></script>
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!--[if IE]>
+			<script src="/view/js/excanvas.compiled.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<h1><img src="/view/img/logo.png" alt="World of Farmcraft" /></h1>
+			</header>
+			<section id="header">
+				<img id="logo" src="/view/img/menu/logo.png" alt="" />
+				<div id="top-bar">
+					<time></time>
+					<div id="life">
+						<progress min="0" max="100"></progress>
+						<p></p>
+					</div>
+					<p id="level"></p>
+					<p id="money"></p>
+				</div>
+				<div id="corner-bar">
+					<a id="ownerVision" title="Toggle Ownership vision" href="#"><img src="/view/img/menu/owner-vision.png" alt="" /></a>
+					<a id="left" title="Turn map on the left" href="#"><img src="/view/img/menu/left.png" alt="" /></a>
+					<a id="right" title="Turn map on the right" href="#"><img src="/view/img/menu/right.png" alt="" /></a>
+					<a id="sound" title="Mute sounds" href="#"><img src="/view/img/menu/sound-on.png" alt="" /></a>
+					<a id="refocus" title="Focus on the player" href="#"><img src="/view/img/menu/refocus.png" alt="" /></a>
+				</div>
+				<ul id="action">
+					<li><a href="#" id="move"><img src="/view/img/action/move.png" alt="Move" /></a></li>
+					<li><a href="#" id="information"><img src="/view/img/action/information.png" alt="Information" /></a></li>
+					<li><a href="#" id="plant"><img src="/view/img/action/plant.png" alt="Plantation" /></a></li>
+					<li><a href="#" id="building"><img src="/view/img/action/building.png" alt="Building" /></a></li>
+					<li><a href="#" id="alliance"><img src="/view/img/action/alliance.png" alt="Alliance" /></a></li>
+					<li><a href="#" id="battle"><img src="/view/img/action/battle.png" alt="Battle" /></a></li>
+					<li id="logout"><a href="/logout"><img src="/view/img/action/logout.png" alt="Log out" /></a></li>
+				</ul>
+			</section>
+			
+			<section id="warning">
+				<h2>Warning</h2>
+				<p>You have to turn on javascript and allow it in order to run this website..</p>
+			</section>
+			
+			<section id="loading">
+				<p id="progressValue"></p>
+				<progress max="100" value="0" />
+			</section>
+			
+			<div id="option">
+				<p id="optionDesc"><span></span></p>
+				<ul id="plantOptions">
+					<li><a href="#" data-name="remove" data-desc="Remove a plant"><img src="/view/img/option/remove.png" alt="Remove" /></a></li>
+					<li><a href="#" data-name="harvest" data-desc="Harvest a plant"><img src="/view/img/option/harvest.png" alt="Harvest" /></a></li>
+					<li><a href="#" data-name="waterize" data-desc="Waterize a plant"><img src="/view/img/option/waterize.png" alt="Waterize" /></a></li>
+					<li><a href="#" data-name="fertilize" data-desc="Fertilize a plant"><img src="/view/img/option/fertilize.png" alt="Fertilize" /></a></li>
+					<li><a href="#" data-name="corn" data-desc="Plant corn seeds"><img src="/view/img/option/corn.png" alt="Corn" /></a></li>
+					<li><a href="#" data-name="tomato" data-desc="Plant tomato seeds"><img src="/view/img/option/tomato.png" alt="Tomato" /></a></li>
+					<li><a href="#" data-name="wheat" data-desc="Plant wheat seeds"><img src="/view/img/option/wheat.png" alt="Wheat" /></a></li>
+				</ul>
+				<ul id="buildingOptions">
+					<li><a href="#" data-name="remove" data-desc="Destruct a building"><img src="/view/img/option/remove.png" alt="Remove" /></a></li>
+					<li><a href="#" data-name="silo" data-desc="Construct a silo"><img src="/view/img/option/silo.png" alt="Silo" /></a></li>
+					<li><a href="#" data-name="barn" data-desc="Construct a barn"><img src="/view/img/option/barn.png" alt="Barn" /></a></li>
+					<li><a href="#" data-name="coldStorage" data-desc="Construct a cold storage"><img src="/view/img/option/cold-storage.png" alt="Cold storage" /></a></li>
+				</ul>
+				<ul id="battleOptions">
+					<li><a href="#" data-name="attack" data-desc="Attack some tiles"><img src="/view/img/option/attack.png" alt="Attack" /></a></li>
+					<li><a href="#" data-name="fork" data-desc="Use a fork to fight"><img src="/view/img/option/fork.png" alt="Fork" /></a></li>
+					<li><a href="#" data-name="baseballBat" data-desc="Use a baseball bat to fight"><img src="/view/img/option/baseball-bat.png" alt="Baseball bat" /></a></li>
+					<li><a href="#" data-name="chainsaw" data-desc="Use a chainsaw to fight"><img src="/view/img/option/chainsaw.png" alt="Chainsaw" /></a></li>
+					<li><a href="#" data-name="ak47" data-desc="Use an AK-47 to fight"><img src="/view/img/option/ak-47.png" alt="AK-47" /></a></li>
+				</ul>
+			</div>
+			<ul id="notification"></ul>
+			<ul id="informations"></ul>
+		</div>
+		<section id="main">
+			<canvas id="canvas"></canvas>
+		</section>
+		<div class="wrapper">
+			<footer>
+				<p>Supinfo dev project 2012-2013</p>
+			</footer>
+		</div>
+		<div id="shadow">
+			<section id="harvestQuestion" class="modal">
+				<h1>What do you want to do with these <span id="cropProductivity"></span> crops?</h1>
+				<p>You can store them in your buildings (if you have some) or directly sell them on the market at the current price:</p>
+				<form>
+					<img src="/view/img/harvesting/market.png" alt="market" /><br />
+					<span id="marketAmount">0</span>
+					<div class="arrows" data-link="market">
+						<a href="#" class="more"></a>
+						<a href="#" class="less"></a>
+					</div> ($<span id="cropMarketPrice"></span> each)
+					<ul>
+						<li>
+							<img src="/view/img/harvesting/silo.png" alt="silo" /><br />
+							<span id="siloAmount">0</span>
+							<div class="arrows" data-link="silo">
+								<a href="#" class="more"></a>
+								<a href="#" class="less"></a>
+							</div>
+							<p class="availability"><span id="siloAvailability">no</span> spaces available</p>
+						</li>
+						<li>
+							<img src="/view/img/harvesting/barn.png" alt="barn" /><br />
+							<span id="barnAmount">0</span>
+							<div class="arrows" data-link="barn">
+								<a href="#" class="more"></a>
+								<a href="#" class="less"></a>
+							</div>
+							<p class="availability"><span id="barnAvailability">no</span> spaces available</p>
+						</li>
+						<li>
+							<img src="/view/img/harvesting/coldStorage.png" alt="cold storage" /><br />
+							<span id="coldStorageAmount">0</span>
+							<div class="arrows" data-link="coldStorage">
+								<a href="#" class="more"></a>
+								<a href="#" class="less"></a>
+							</div>
+							<p class="availability"><span id="coldStorageAvailability">no</span> spaces available</p>
+						</li>
+					</ul>
+					<input id="submitHarvestQuestion" type="submit" value="Proceed" value="0" />
+					<input id="cancelHarvestQuestion" type="button" value="cancel" />
+				</form>
+			</section>
+		</div>
+	</body>
+</html>
