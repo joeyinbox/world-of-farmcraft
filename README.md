@@ -1,4 +1,4 @@
-# World of Farmcraft #
+https://repl.it/badge/github/joeyinbox/world-of-farmcraft # World of Farmcraft #
 
 An online multiplayer 3D isometric farm game built with Node.js
 
